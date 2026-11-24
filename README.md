@@ -64,7 +64,7 @@ Rural classrooms face three simultaneous constraints that break most digital lea
 ## Architecture
 
 ### Diagram
-![Architecture Diagram](docs/architecture.svg)
+![Architecture Diagram](https://raw.githubusercontent.com/ananyaushetty97-alt/ShikshaSync/main/docs/architecture.svg)
 
 ### Text Flow
 ```
@@ -123,7 +123,7 @@ ShikshaSync/
 ├── .gitignore
 ├── .env.example
 ├── docs/
-│   └── architecture.png
+│   └── architecture.svg
 ├── app/                      # Flutter Android App (Student)
 │   ├── pubspec.yaml
 │   ├── lib/
