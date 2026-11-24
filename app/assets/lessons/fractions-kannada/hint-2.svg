@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" width="400" height="200">
+  <defs>
+    <style>
+      .hint-title { font: bold 22px 'Arial', sans-serif; fill: #F59E0B; text-anchor: middle; }
+      .hint-text { font: 16px 'Arial', sans-serif; fill: #374151; text-anchor: middle; }
+      .kannada-text { font: 16px 'Noto Sans Kannada', 'Arial', sans-serif; fill: #374151; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <rect width="400" height="200" fill="#FFFBEB"/>
+  <rect width="400" height="200" fill="none" stroke="#F59E0B" stroke-width="3" rx="12"/>
+
+  <!-- Title -->
+  <text x="200" y="30" class="hint-title">💡ಸೂಚನೆ (Hint)</text>
+
+  <!-- First bar: 2/5 -->
+  <g transform="translate(50, 60)">
+    <rect x="0" y="0" width="120" height="50" fill="#FFF8E1" stroke="#F59E0B" stroke-width="3" rx="5"/>
+    <rect x="0" y="0" width="48" height="50" fill="#FDE68A" rx="5"/>
+    <rect x="48" y="0" width="48" height="50" fill="#FCD34D" rx="5"/>
+    <rect x="96" y="0" width="24" height="50" fill="#FFF3E0" rx="5"/>
+    <text x="60" y="30" class="hint-title">⅖</text>
+    <text x="60" y="75" class="hint-text" style="font-size: 12px;">2 parts out of 5</text>
+  </g>
+
+  <!-- Plus -->
+  <text x="200" y="85" text-anchor="middle" font-size="36" fill="#F59E0B">+</text>
+
+  <!-- Second bar: 2/5 -->
+  <g transform="translate(230, 60)">
+    <rect x="0" y="0" width="120" height="50" fill="#FFF8E1" stroke="#F59E0B" stroke-width="3" rx="5"/>
+    <rect x="0" y="0" width="48" height="50" fill="#FDE68A" rx="5"/>
+    <rect x="48" y="0" width="48" height="50" fill="#FCD34D" rx="5"/>
+    <rect x="96" y="0" width="24" height="50" fill="#FFF3E0" rx="5"/>
+    <text x="60" y="30" class="hint-title">⅖</text>
+    <text x="60" y="75" class="hint-text" style="font-size: 12px;">2 parts out of 5</text>
+  </g>
+
+  <!-- Equals -->
+  <text x="200" y="155" text-anchor="middle" font-size="36" fill="#D32F2F">=</text>
+
+  <!-- Result: 4/5 -->
+  <g transform="translate(140, 165)">
+    <rect x="0" y="0" width="120" height="30" fill="#FEF2F2" stroke="#EF4444" stroke-width="3" rx="5"/>
+    <rect x="0" y="0" width="48" height="30" fill="#FCA5A5" rx="5"/>
+    <rect x="48" y="0" width="48" height="30" fill="#FCA5A5" rx="5"/>
+    <rect x="96" y="0" width="24" height="30" fill="#FEF2F2" rx="5"/>
+    <text x="60" y="20" class="hint-title" style="fill: #EF4444;">⅘</text>
+  </g>
+
+  <!-- Kannada explanation text -->
+  <text x="200" y="185" class="hint-text" style="font-size: 14px;">saame denominator = denominator kalisabeda (same denominator, just add numerators)</text>
+</svg>

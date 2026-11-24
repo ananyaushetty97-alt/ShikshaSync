@@ -1,0 +1,150 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: ShikshaSync Backend - Sync API and Manifest API
+
+Globals:
+  Function:
+    Timeout: 30
+    Runtime: python3.11
+    Environment:
+      Variables:
+        AWS_REGION: us-east-1
+        DYNAMODB_EVENTS_TABLE: !Ref EventsTable
+        DYNAMODB_STUDENTS_TABLE: !Ref StudentsTable
+        DYNAMODB_LESSONS_TABLE: !Ref LessonsTable
+        S3_LESSON_PACKS_BUCKET: !Ref LessonPacksBucket
+
+Resources:
+  # DynamoDB Tables
+  EventsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: shikshasync-events
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: event_id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: event_id
+          KeyType: HASH
+      TimeToLiveSpecification:
+        AttributeName: ttl
+        Enabled: true
+
+  StudentsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: shikshasync-students
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: student_id
+          AttributeType: S
+        - AttributeName: skill_id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: student_id
+          KeyType: HASH
+        - AttributeName: skill_id
+          KeyType: RANGE
+      GlobalSecondaryIndexes:
+        - IndexName: skill-index
+          KeySchema:
+            - AttributeName: skill_id
+              KeyType: HASH
+          Projection:
+            ProjectionType: ALL
+
+  LessonsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: shikshasync-lessons
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: pack_id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: pack_id
+          KeyType: HASH
+
+  # S3 Bucket for Lesson Packs
+  LessonPacksBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: shikshasync-lesson-packs
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: false
+        BlockPublicPolicy: false
+        IgnorePublicAcls: false
+        RestrictPublicBuckets: false
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+
+  # Lambda Functions
+  SyncFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: shikshasync-sync
+      CodeUri: .
+      Handler: sync_handler.lambda_handler
+      Policies:
+        - DynamoDBWritePolicy:
+            TableName: !Ref EventsTable
+        - DynamoDBWritePolicy:
+            TableName: !Ref StudentsTable
+      Events:
+        SyncApi:
+          Type: Api
+          Properties:
+            Path: /sync
+            Method: post
+            RestApiId: !Ref ApiGateway
+
+  ManifestFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: shikshasync-manifest
+      CodeUri: .
+      Handler: manifest_handler.lambda_handler
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref LessonsTable
+        - S3ReadPolicy:
+            BucketName: !Ref LessonPacksBucket
+      Events:
+        ManifestApi:
+          Type: Api
+          Properties:
+            Path: /manifest
+            Method: get
+            RestApiId: !Ref ApiGateway
+
+  # API Gateway
+  ApiGateway:
+    Type: AWS::Serverless::Api
+    Properties:
+      Name: shikshasync-api
+      StageName: prod
+      Cors:
+        AllowMethods: "'GET,POST,OPTIONS'"
+        AllowHeaders: "'Content-Type'"
+        AllowOrigin: "'*'"
+        MaxAge: "'86400'"
+
+Outputs:
+  ApiUrl:
+    Description: API Gateway endpoint URL
+    Value: !Sub "https://${ApiGateway}.execute-api.${AWS_REGION}.amazonaws.com/prod/"
+  EventsTableName:
+    Description: Events DynamoDB table name
+    Value: !Ref EventsTable
+  StudentsTableName:
+    Description: Students DynamoDB table name
+    Value: !Ref StudentsTable
+  LessonsTableName:
+    Description: Lessons DynamoDB table name
+    Value: !Ref LessonsTable
+  LessonPacksBucketName:
+    Description: S3 bucket for lesson packs
+    Value: !Ref LessonPacksBucket

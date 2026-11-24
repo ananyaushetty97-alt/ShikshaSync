@@ -1,0 +1,12 @@
+{
+  "packs": [
+    {
+      "packId": "fractions-kannada-01",
+      "path": "fractions-kannada",
+      "grade": 6,
+      "subject": "math",
+      "language": "kn",
+      "version": "1.0.0"
+    }
+  ]
+}

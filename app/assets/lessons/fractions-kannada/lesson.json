@@ -1,0 +1,16 @@
+{
+  "packId": "fractions-kannada-01",
+  "grade": 6,
+  "subject": "math",
+  "language": "kn",
+  "skills": ["fractions-addition-same-denom"],
+  "lessons": [
+    {
+      "id": "lesson-1",
+      "title": "ಭಿನ್ನರಾಶಿಗಳು ಸೇರ್ಬಲೆ",
+      "narration": "narration-1.mp3",
+      "visual": "visual-1.svg",
+      "questions": ["q1", "q2", "q3"]
+    }
+  ]
+}

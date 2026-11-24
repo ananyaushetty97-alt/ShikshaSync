@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" width="400" height="200">
+  <defs>
+    <style>
+      .hint-title { font: bold 22px 'Arial', sans-serif; fill: #F59E0B; text-anchor: middle; }
+      .hint-text { font: 16px 'Arial', sans-serif; fill: #374151; text-anchor: middle; }
+      .kannada-text { font: 16px 'Noto Sans Kannada', 'Arial', sans-serif; fill: #374151; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <rect width="400" height="200" fill="#FFFBEB"/>
+  <rect width="400" height="200" fill="none" stroke="#F59E0B" stroke-width="3" rx="12"/>
+
+  <!-- Title -->
+  <text x="200" y="30" class="hint-title">💡ಸೂಚನೆ (Hint)</text>
+
+  <!-- Pizza visual: two quarters make a half -->
+  <g transform="translate(80, 50)">
+    <circle cx="60" cy="60" r="55" fill="#FFF8E1" stroke="#F59E0B" stroke-width="3"/>
+    <circle cx="60" cy="60" r="50" fill="#FFF3E0"/>
+
+    <!-- Slice 1 (top-right quadrant) -->
+    <path d="M60,10 L60,110 A50,50 0 0 1 110,60 L60,60 Z" fill="#FDE68A"/>
+    <text x="60" y="35" class="hint-title">¼</text>
+
+    <!-- Slice 2 (bottom-right quadrant) -->
+    <path d="M60,10 A50,50 0 0 1 110,60 L60,60 Z" fill="#FCD34D"/>
+    <text x="95" y="80" class="hint-title">¼</text>
+  </g>
+
+  <!-- Arrow -->
+  <text x="200" y="110" text-anchor="middle" font-size="36" fill="#F59E0B">→</text>
+
+  <!-- Combined result -->
+  <g transform="translate(280, 50)">
+    <circle cx="60" cy="60" r="55" fill="#FFF8E1" stroke="#F59E0B" stroke-width="3"/>
+    <circle cx="60" cy="60" r="50" fill="#FFF3E0"/>
+    <path d="M60,10 L60,110" stroke="#F59E0B" stroke-width="3"/>
+    <path d="M60,10 A50,50 0 0 1 110,60 L60,60 Z" fill="#FDE68A"/>
+    <path d="M60,10 A50,50 0 0 1 110,60 L60,60 Z" fill="#FCD34D"/>
+    <text x="60" y="35" class="hint-title">½</text>
+    <text x="60" y="100" class="kannada-text">ಎರಡು ¼ = ½</text>
+  </g>
+
+  <!-- Kannada explanation text -->
+  <text x="200" y="170" class="hint-text" style="font-size: 14px;">ಇದೇ ಹ}}_{\text{two pieces of same-sized pizza}</text>
+</svg>

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <style>
+      .title { font: bold 24px 'Arial', sans-serif; fill: #2E7D32; text-anchor: middle; }
+      .label { font: 18px 'Arial', sans-serif; fill: #374151; text-anchor: middle; }
+      .fraction-text { font: bold 28px 'Arial', sans-serif; fill: #1F2937; text-anchor: middle; }
+      .highlight { fill: #FEF3C7; stroke: #F59E0B; stroke-width: 2; }
+      .pizza-slice { stroke: #374151; stroke-width: 1.5; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="300" fill="#F8FAFC"/>
+
+  <!-- Title -->
+  <text x="200" y="40" class="title">ಭಿನ್ನರಾಶಿಗಳು: Pizza Regie</text>
+
+  <!-- First Pizza: 1/4 -->
+  <g transform="translate(80, 80)">
+    <circle cx="70" cy="70" r="65" class="pizza-slice" fill="#FFF7ED"/>
+    <!-- Slice 1 (highlighted) -->
+    <path d="M 70 70 L 70 5 L 135 70 Z" class="pizza-slice highlight"/>
+    <!-- Slice 2 -->
+    <path d="M 70 70 L 135 70 L 70 135 Z" class="pizza-slice" fill="#FEF3C7"/>
+    <!-- Slice 3 -->
+    <path d="M 70 70 L 70 135 L 5 70 Z" class="pizza-slice" fill="#FFF7ED"/>
+    <!-- Slice 4 -->
+    <path d="M 70 70 L 5 70 L 70 5 Z" class="pizza-slice" fill="#FEF3C7"/>
+    <circle cx="70" cy="70" r="65" fill="none" stroke="#374151" stroke-width="2"/>
+    <text x="70" y="160" class="label">¼ = ಒಂದು calibrated ಭಾಗ</text>
+  </g>
+
+  <!-- Plus sign -->
+  <text x="200" y="150" class="fraction-text" font-size="48">+</text>
+
+  <!-- Second Pizza: 1/4 -->
+  <g transform="translate(320, 80)">
+    <circle cx="70" cy="70" r="65" class="pizza-slice" fill="#FFF7ED"/>
+    <path d="M 70 70 L 70 5 L 135 70 Z" class="pizza-slice highlight"/>
+    <path d="M 70 70 L 135 70 L 70 135 Z" class="pizza-slice" fill="#FEF3C7"/>
+    <path d="M 70 70 L 70 135 L 5 70 Z" class="pizza-slice" fill="#FFF7ED"/>
+    <path d="M 70 70 L 5 70 L 70 5 Z" class="pizza-slice" fill="#FEF3C7"/>
+    <circle cx="70" cy="70" r="65" fill="none" stroke="#374151" stroke-width="2"/>
+    <text x="70" y="160" class="label">¼ = ಒಂದು calibrated भाग</text>
+  </g>
+
+  <!-- Equals -->
+  <text x="200" y="250" class="fraction-text" font-size="36">=</text>
+
+  <!-- Result: 1/2 -->
+  <g transform="translate(200, 280)">
+    <text x="0" y="0" class="label" style="font-size: 16px;">¼ + ¼ = ½ (ಎರಡು calibrated ಭಾಗಗಳು = ಅರ್ಧ)</text>
+  </g>
+</svg>

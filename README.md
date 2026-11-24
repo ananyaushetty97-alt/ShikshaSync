@@ -63,12 +63,16 @@ Rural classrooms face three simultaneous constraints that break most digital lea
 
 ## Architecture
 
+### Diagram
+![Architecture Diagram](docs/architecture.svg)
+
+### Text Flow
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                           CONTENT CREATION (Online, Once)                   │
 │  Teacher Dashboard ──► Lambda (assemble pack) ──► ElevenLabs (TTS)          │
 │       │                                                │                    │
-│       └──────────────► S3 + CloudFront (lesson packs) ◄┘                    │
+│       └──────────────────────► S3 + CloudFront (lesson packs) ◄┘                    │
 └─────────────────────────────────────────────────────────────────────────────┘
                                     │
                                     ▼ Download (brief online window)
@@ -194,6 +198,25 @@ ELEVENLABS_API_KEY=your_key_here
 AWS_REGION=us-east-1
 DYNAMODB_TABLE=shikshasync-events
 ```
+
+---
+
+## Demo Video Guide
+
+For the wHACKiest 2026 submission, see **[DEMO_SCRIPT.md](DEMO_SCRIPT.md)** for:
+- Complete 4:30 minute recording script with speaker cues
+- Segment-by-segment actions for the demo flow
+- Recording tips (OBS Studio, scrcpy, Android screen record)
+- Fallback strategies if features don't work during recording
+- Upload checklist for YouTube + Devnovate submission
+
+**Key Demo Flow:**
+1. Show two student profiles on one device (shared device mode)
+2. Turn on Airplane Mode → "Offline Mode Active" badge
+3. Student A: 2 wrong answers → adaptive hint + easier question
+4. Switch to Student B: 2 correct answers → harder questions
+5. Turn Wi-Fi on → auto-sync (KB-sized delta)
+6. Open Teacher Dashboard → skill-gap groups, suggested activities
 
 ---
 

@@ -1,0 +1,37 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "skillId": "fractions-addition-same-denom",
+      "difficulty": "easy",
+      "questionText": "¼ + ¼ = ?",
+      "questionAudio": "q1.mp3",
+      "options": ["¼", "½", "¾", "1"],
+      "correctAnswer": "½",
+      "hintAudio": "hint-1.mp3",
+      "hintVisual": "hint-1.svg"
+    },
+    {
+      "id": "q2",
+      "skillId": "fractions-addition-same-denom",
+      "difficulty": "easy",
+      "questionText": "⅓ + ⅓ = ?",
+      "questionAudio": "q2.mp3",
+      "options": ["⅓", "⅔", "1", "½"],
+      "correctAnswer": "⅔",
+      "hintAudio": "hint-1.mp3",
+      "hintVisual": "hint-1.svg"
+    },
+    {
+      "id": "q3",
+      "skillId": "fractions-addition-same-denom",
+      "difficulty": "medium",
+      "questionText": "⅖ + ⅖ = ?",
+      "questionAudio": "q3.mp3",
+      "options": ["⅖", "⅗", "⅘", "1"],
+      "correctAnswer": "⅘",
+      "hintAudio": "hint-2.mp3",
+      "hintVisual": "hint-2.svg"
+    }
+  ]
+}

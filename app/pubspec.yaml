@@ -1,0 +1,30 @@
+name: shikshasync
+description: Offline-first adaptive learning app for rural multi-grade classrooms
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  sqflite: ^2.3.2
+  path: ^1.9.0
+  connectivity_plus: ^5.0.2
+  audioplayers: ^5.2.1
+  flutter_svg: ^2.0.9
+  uuid: ^4.3.3
+  shared_preferences: ^2.2.2
+  http: ^1.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/lessons/fractions-kannada/
+    - assets/lessons/manifest.json
+    - assets/avatars/
