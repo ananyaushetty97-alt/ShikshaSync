@@ -64,7 +64,7 @@ Rural classrooms face three simultaneous constraints that break most digital lea
 ## Architecture
 
 ### Diagram
-![Architecture Diagram](https://raw.githubusercontent.com/ananyaushetty97-alt/ShikshaSync/main/docs/architecture.svg)
+![Architecture Diagram](docs/architecture.png)
 
 ### Text Flow
 ```
