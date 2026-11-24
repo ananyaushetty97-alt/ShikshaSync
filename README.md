@@ -117,78 +117,43 @@ ShikshaSync/
 ├── README.md
 ├── LICENSE
 ├── .gitignore
+├── .env.example
 ├── docs/
-│   ├── architecture.png
-│   └── screenshots/
+│   └── architecture.png
 ├── app/                      # Flutter Android App (Student)
 │   ├── pubspec.yaml
 │   ├── lib/
 │   │   ├── main.dart
 │   │   ├── models/
 │   │   ├── services/
-│   │   │   ├── db_service.dart          # SQLite
-│   │   │   ├── adaptive_engine.dart     # Mastery rules
-│   │   │   ├── audio_service.dart       # Cached MP3
-│   │   │   └── sync_service.dart        # Delta sync queue
+│   │   │   ├── db_service.dart
+│   │   │   ├── adaptive_engine.dart
+│   │   │   ├── audio_service.dart
+│   │   │   └── sync_service.dart
 │   │   ├── screens/
-│   │   │   ├── student_select.dart      # Avatar + PIN
-│   │   │   ├── lesson_player.dart       # Offline learning
-│   │   │   └── offline_badge.dart       # Connectivity indicator
+│   │   │   ├── student_select.dart
+│   │   │   ├── lesson_player.dart
+│   │   │   └── offline_badge.dart
 │   │   └── widgets/
 │   └── assets/
 │       └── lessons/
 │           └── fractions-kannada/
-│               ├── lesson.json
-│               ├── quiz.json
-│               ├── *.svg
-│               └── *.mp3
 ├── backend/                  # AWS Lambda (Sync API)
-│   ├── sync_handler.py       # POST /sync
-│   ├── manifest_handler.py   # GET /manifest
+│   ├── sync_handler.py
+│   ├── manifest_handler.py
 │   ├── requirements.txt
-│   └── template.yaml         # SAM deploy config
+│   └── template.yaml
 ├── dashboard/                # React Teacher Dashboard
 │   ├── package.json
 │   ├── src/
 │   │   ├── App.jsx
 │   │   ├── components/
-│   │   │   ├── SkillGapGroups.jsx
-│   │   │   ├── StudentList.jsx
-│   │   │   ├── SyncStatus.jsx
-│   │   │   └── MultiGradeFilter.jsx
 │   │   └── services/api.js
 │   └── public/
 └── lesson-packs/             # Source content for pack creation
     ├── fractions-kannada/
-    │   ├── lesson.md
-    │   ├── quiz.md
-    │   └── scripts/
     └── manifest.json
 ```
-
----
-
-## Current MVP Status
-
-| Component | Status | Notes |
-|-----------|--------|-------|
-| Flutter app scaffold | 🔄 In progress | `flutter create` done |
-| SQLite schema (students, mastery, events) | ⬜ Pending | |
-| Adaptive engine (rule-based) | ⬜ Pending | Core logic |
-| Lesson pack parser (JSON + assets) | ⬜ Pending | |
-| Offline learning screen + Listen button | ⬜ Pending | |
-| Student avatar + PIN switching | ⬜ Pending | |
-| Sync queue + delta upload | ⬜ Pending | |
-| Backend `/sync` endpoint (Lambda) | ⬜ Pending | |
-| Backend `/manifest` endpoint | ⬜ Pending | |
-| DynamoDB table design | ⬜ Pending | |
-| Teacher dashboard (React) | ⬜ Pending | Skill-gap view |
-| Sample lesson packs (fractions, Kannada) | ⬜ Pending | 2-3 lessons |
-| ElevenLabs audio generation scripts | ⬜ Pending | |
-| Architecture diagram | ⬜ Pending | `docs/architecture.png` |
-| Demo video recorded | ⬜ Pending | 3-5 min for submission |
-
-> **Legend:** ✅ Done • 🔄 In Progress • ⬜ Pending • ❌ Blocked
 
 ---
 
@@ -223,9 +188,8 @@ sam local start-api
 ```
 
 ### Environment Variables
-Copy `.env.example` to `.env` and add your keys:
+Copy `.env.example` to `.env` and add your keys (`.env` is gitignored):
 ```bash
-# Never commit .env — it's in .gitignore
 ELEVENLABS_API_KEY=your_key_here
 AWS_REGION=us-east-1
 DYNAMODB_TABLE=shikshasync-events
@@ -233,50 +197,8 @@ DYNAMODB_TABLE=shikshasync-events
 
 ---
 
-## Demo Flow (for Video / Live Pitch)
-
-1. **Open app** → Show two student profiles (avatar + PIN) on one device
-2. **Enable Airplane Mode** → "Offline Mode Active" badge appears
-3. **Student A** → Answer 2 fraction questions wrong → Kannada audio hint plays → easier visual question shown
-4. **Switch to Student B** (separate PIN) → Answer correctly → difficulty increases
-5. **Disable Airplane Mode** → Sync indicator flashes → show tiny JSON payload sent
-6. **Open Teacher Dashboard** → Student A flagged under "Fractions: needs revision"
-
----
-
-## Team Code Rangers
-
-| Role | Name | USN |
-|------|------|-----|
-| **Lead** | Ananya U Shetty | [USN] |
-| Member | Ananya Kamath | [USN] |
-| Member | Abhivandana M | [USN] |
-
-**College:** RV College of Engineering  
-**Track:** UnlockED (wHACKiest 2026)  
-**Team ID:** [Fill from registration]
-
----
-
-## Sponsor Technologies Used
-
-- ✅ **ElevenLabs** — Regional-language text-to-speech (Kannada, Hindi, Tamil, English) for lesson narration, questions, and hints. Pre-generated and cached for fully offline playback.
-- ✅ **AWS** — API Gateway, Lambda, DynamoDB, S3, CloudFront, Cognito for sync backend, content delivery, auth, and teacher dashboard hosting.
-
----
-
 ## License
 
 MIT License — see [LICENSE](LICENSE) for details.
 
-Copyright (c) 2024 Team Code Rangers, RV College of Engineering.
-
----
-
-## Submission Links (wHACKiest 2026)
-
-- **GitHub Repo:** https://github.com/ananyaushetty97-alt/ShikshaSync
-- **Pitch Deck (Google Drive):** [Add link — set to "Anyone with link can view"]
-- **Demo Video (YouTube):** [Add link — Unlisted or Public]
-
-> All links submitted via Devnovate before **24 Nov 2026, 11:59 PM**.
+Copyright (c) 2026 Team Code Rangers, RV College of Engineering.
